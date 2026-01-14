@@ -1,0 +1,16 @@
+{
+  "Group": "Infraly",
+  "Name": "SourceQuery",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "Anthony",
+      "Email": "anthony@infraly.co",
+      "Url": "https://physgun.com"
+    }
+  ],
+  "Website": "https://physgun.com",
+  "Main": "com.infraly.sourcequery.SourceQueryPlugin",
+  "ServerVersion": "*",
+  "Dependencies": {}
+}
