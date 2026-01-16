@@ -14,6 +14,8 @@ public final class A2SProtocol {
     public static final byte RESPONSE_RULES = 0x45;
     public static final byte RESPONSE_CHALLENGE = 0x41;
 
+    public static final byte GAMEPORT_FLAG = 0x80;
+
     public static final byte SERVER_TYPE_DEDICATED = 'd';
 
     public static final byte ENVIRONMENT_LINUX = 'l';

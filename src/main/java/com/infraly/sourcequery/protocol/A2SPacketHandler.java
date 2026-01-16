@@ -4,6 +4,7 @@ import com.hypixel.hytale.common.util.java.ManifestUtil;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.protocol.ProtocolSettings;
 import com.hypixel.hytale.server.core.HytaleServer;
+import com.hypixel.hytale.server.core.Options;
 import com.hypixel.hytale.server.core.plugin.PluginManager;
 import com.hypixel.hytale.server.core.universe.Universe;
 import io.netty.buffer.ByteBuf;
@@ -25,9 +26,11 @@ public final class A2SPacketHandler extends SimpleChannelInboundHandler<Datagram
     private static final byte ENVIRONMENT = resolveEnvironment();
 
     private final HytaleLogger logger;
+    private final int gamePort;
 
     public A2SPacketHandler(HytaleLogger logger) {
         this.logger = logger;
+        this.gamePort = Options.getOptionSet().valuesOf(Options.BIND).getFirst().getPort();
     }
 
     private static byte resolveEnvironment() {
@@ -95,7 +98,8 @@ public final class A2SPacketHandler extends SimpleChannelInboundHandler<Datagram
         buf.writeByte(VAC_UNSECURED);
 
         writeString(buf, ManifestUtil.getImplementationVersion());
-        buf.writeByte(0);
+        buf.writeByte(GAMEPORT_FLAG);
+        buf.writeShortLE(gamePort);
 
         return buf;
     }
