@@ -2,6 +2,8 @@
 
 A2S query protocol plugin for Hytale servers. Lets game server browsers query your server for info, player list, and rules.
 
+You can find this plugin on CurseForge - https://www.curseforge.com/hytale/mods/source-query-a2s
+
 ## Building
 
 ```bash
