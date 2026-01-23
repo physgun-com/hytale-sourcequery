@@ -24,6 +24,13 @@ Set the `QUERY_PORT` environment variable to change the UDP port. If not set, it
 QUERY_PORT=27015
 ```
 
+This plugin automatically checks for updates using the github API. To disable this feature, set the `SOURCEQUERY_UPDATE_CHECK`
+environment variable to `false`.
+
+```bash
+SOURCEQUERY_UPDATE_CHECK=false
+```
+
 ## What it exposes
 
 - **A2S_INFO** - Server name, map, player count, max players, game version

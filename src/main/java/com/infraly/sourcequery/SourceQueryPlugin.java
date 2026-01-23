@@ -49,7 +49,10 @@ public final class SourceQueryPlugin extends JavaPlugin {
             t.setDaemon(true);
             return t;
         });
-        scheduler.schedule(this::checkForUpdates, 30, TimeUnit.SECONDS);
+
+        if (this.shouldCheckForUpdates()) {
+            scheduler.schedule(this::checkForUpdates, 30, TimeUnit.SECONDS);
+        }
     }
 
     @Override
@@ -72,6 +75,14 @@ public final class SourceQueryPlugin extends JavaPlugin {
             }
         }
         return Options.getOptionSet().valuesOf(Options.BIND).getFirst().getPort() + 1;
+    }
+
+    private boolean shouldCheckForUpdates() {
+        String env = System.getenv("SOURCEQUERY_UPDATE_CHECK");
+        if (env != null) {
+            return env.equalsIgnoreCase("true") || env.equalsIgnoreCase("1");
+        }
+        return true;
     }
 
     private void checkForUpdates() {
